@@ -1,24 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useReducer, useState } from 'react'
+import styles from './App.module.css'
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from './pages/Home/Home';
+import CurrentPost from './pages/CurrentPost/CurrentPost';
 
-function App() {
+export const mockPosts = [
+  {title: 'SourceMap', likeNumber: 32, dislikeNumber: 18, id:1, imgUrl:'https://placehold.co/558x273'},
+  {title: 'SourceMap kjlkjlkjlkjhlkjhlkjhlkjhlkjhljkh hlkjhlkjhlkjhlkjhljhlkjhlkjhl lkjhlkh ', likeNumber: 32, dislikeNumber: 18, id:2, imgUrl:'https://placehold.co/558x273'},
+  {title: 'SourceMap', likeNumber: 32, dislikeNumber: 18, id:3, imgUrl:'https://placehold.co/558x273'},
+  {title: 'SourceMap', likeNumber: 32, dislikeNumber: 18, id:4, imgUrl:'https://placehold.co/558x273'},
+  {title: 'SourceMap', likeNumber: 32, dislikeNumber: 18, id:5, imgUrl:'https://placehold.co/558x273'},
+  {title: 'SourceMap', likeNumber: 32, dislikeNumber: 18, id:6, imgUrl:'https://placehold.co/558x273'},
+]
+
+const App = () => {
+
+
+  // const [state, dispatch] = useReducer(first, second, third)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={styles.container}>
+      <BrowserRouter basename='/posts'>
+        <Routes>
+          <Route path='/' element={<Home />}/>
+          <Route path='/:postId' element={<CurrentPost title={'some'} body={'Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, quod!'}/>}/>
+        </Routes>
+
+      </BrowserRouter>
     </div>
   );
 }

@@ -1,0 +1,26 @@
+.post{
+  width: 558px;
+  border: 1px solid #F4F4F4;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.title{
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 32px;
+}
+.info{
+  padding: 24px 16px 32px;
+}
+.reaction{
+  display: flex;
+}
+.reaction div:first-child{
+  margin-right: 24px;
+}
+.footer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24px;
+}

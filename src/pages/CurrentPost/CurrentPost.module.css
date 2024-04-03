@@ -1,0 +1,39 @@
+.head{
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  height: 32px;
+  margin-bottom: 32px;
+  padding: 16px 0;
+}
+.reaction{
+  display: flex;
+}
+.reaction div:first-child{
+  margin-right: 24px;
+}
+.arrow{
+  margin-right: 10px;
+  font-size: 18px;
+  font-weight: 700;
+}
+.back_to_post{
+  font-size: 24px;
+  line-height: 32px;
+}
+.title{
+  text-align: center;
+  font-size: 40px;
+  line-height: 48px;
+  font-weight: 700;
+}
+.picture{
+  width: 848px;
+  margin: 48px auto;
+}
+.text{
+  width: 848px;
+  margin: auto;
+  font-size: 18px;
+  line-height: 26px;
+}

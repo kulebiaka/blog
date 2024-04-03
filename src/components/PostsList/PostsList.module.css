@@ -1,0 +1,9 @@
+.list{
+  display: grid;
+  grid-gap: 24px;
+  grid-template-columns: 1fr 1fr;
+  /* flex-wrap: wrap; */
+  /* justify-content: space-between; */
+  /* column-count: 2; */
+  grid-gap: 24px;
+}
