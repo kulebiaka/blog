@@ -36,7 +36,7 @@ const PostPreview = ({ title, postId, imgUrl, rating: { likeNumber, dislikeNumbe
         <h2 className={styles.title}>{title}</h2>
         <div className={styles.footer}>
           <ButtonReactionBlock likeNumber={likeNumber} dislikeNumber={dislikeNumber} reaction={reaction} onLike={onLikeButton} onDislike={onDislikeButton}/>
-          <ButtonReadMore postPath={`/${postId}`} />
+          <ButtonReadMore postPath={`/posts/${postId}`} />
         </div>
       </div>
     </li>

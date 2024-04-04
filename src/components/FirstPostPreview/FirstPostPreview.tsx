@@ -39,7 +39,7 @@ function FirstPostPreview({ post }: { post: Post }) {
         </div>
         <div className={styles.text}>{body}</div>
         <div className={styles.footer}>
-          <ButtonReadMore postPath={`/${id}`} />
+          <ButtonReadMore postPath={`/posts/${id}`} />
         </div>
       </div>
     </article>
