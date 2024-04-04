@@ -3,8 +3,8 @@
 ## Installation:
 To install the project locally, follow these steps:
 
-Clone the repository: git clone https://github.com/kulebiaka/social-network.git
-Navigate into the project directory: cd social-network
+Clone the repository: git clone https://github.com/kulebiaka/blog.git
+Navigate into the project directory: cd blog
 Install dependencies:  
 ### `npm install`
 
