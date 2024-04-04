@@ -1,0 +1,4 @@
+.list {
+  column-count: 2;
+  grid-gap: 24px;
+}

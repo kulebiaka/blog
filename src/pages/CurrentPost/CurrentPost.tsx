@@ -1,36 +1,53 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './CurrentPost.module.css'
-import ButtonLike from '../../components/ButtonLike/ButtonLike'
-import ButtonDislike from '../../components/ButtonDislike/ButtonDislike'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useParams } from 'react-router-dom'
+import { dislikePost, getPostById, likePost } from '../../redux/postSlice'
+import ButtonReactionBlock from '../../components/ButtonsReactionBlock/ButtonReactionBlock'
+import { useAppDispatch, useAppSelector } from '../../redux'
+import Loader from '../../components/Loader/Loader'
 
-type Props = {}
+const CurrentPost = () => {
 
-const CurrentPost = ({ title, likeNumber, dislikeNumber, id, reaction, imgUrl, body }: any) => {
+  const dispatch = useAppDispatch()
+  const postId = useParams().postId ?? '1'
+  const [post, setPost] = useState<any>()
+  const reaction = useAppSelector(state => state.postsSlice.ratings[+(postId)-1]?.reaction)
+  const likeNumber = useAppSelector(state => state.postsSlice.ratings[+(postId)-1]?.likeNumber)
+  const dislikeNumber = useAppSelector(state => state.postsSlice.ratings[+(postId)-1]?.dislikeNumber)
+
+  useEffect(() => {
+    dispatch(getPostById(postId)).then(post => setPost({...post}))
+  }, [postId])
+
+  const onLikeButton = () => {
+    dispatch(likePost(postId))
+  }
+  const onDislikeButton = () => {
+    dispatch(dislikePost(postId))
+  }
+
+  if(!post) return <Loader />
 
   return (
     <div>
       <div className={styles.head}>
-        <NavLink to={'/'}>
+        <NavLink to={'/'} className={styles.link}>
           <span className={styles.arrow}>&#8592;</span>
           <span className={styles.back_to_post}>Вернуться к статьям</span>
         </NavLink>
-        <span className={styles.reaction}>
-          <ButtonLike number={likeNumber} active={reaction === 'like'} />
-          <ButtonDislike number={dislikeNumber} active={reaction === 'dislike'} />
-        </span>
+        <ButtonReactionBlock likeNumber={likeNumber} dislikeNumber={dislikeNumber} reaction={reaction} onDislike={onDislikeButton} onLike={onLikeButton}/>
       </div>
 
       <h1 className={styles.title}>
-        {title}
+        {post.title}
       </h1>
 
       <div className={styles.picture} >
-        <img src='https://placehold.co/848x477' alt="" />
+        <img src={post?.imgUrl ?? 'https://placehold.co/848x477'} alt="" />
       </div>
 
       <div className={styles.text}>
-        {body}
+        {post.body}
       </div>
 
     </div>

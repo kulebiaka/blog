@@ -1,30 +1,42 @@
 import React from 'react'
 import styles from './PostPreview.module.css'
-import ButtonLike from '../ButtonLike/ButtonLike'
-import ButtonDislike from '../ButtonDislike/ButtonDislike'
 import ButtonReadMore from '../ButtonReadMore/ButtonReadMore'
+import { useAppDispatch } from '../../redux'
+import ButtonReactionBlock from '../ButtonsReactionBlock/ButtonReactionBlock'
+import { dislikePost, likePost } from '../../redux/postSlice'
 
-type Props = {
-  imgUrl: string,
-  title: string,
+type Rating = {
   likeNumber: number,
   dislikeNumber: number,
   reaction?: 'like' | 'dislike',
-  id: string,
 }
 
-const PostPreview = ({ title, likeNumber, dislikeNumber, id, reaction, imgUrl }: Props) => {
+type Props = {
+  imgUrl?: string,
+  title: string,
+  postId: string,
+  rating: Rating
+}
+
+const PostPreview = ({ title, postId, imgUrl, rating: { likeNumber, dislikeNumber, reaction} }: Props) => {
+
+  const dispatch = useAppDispatch()
+
+  const onLikeButton = () => {
+    dispatch(likePost(postId))
+  }
+  const onDislikeButton = () => {
+    dispatch(dislikePost(postId))
+  }
+
   return (
     <li className={styles.post}>
-      <img src={imgUrl} alt="" />
+      <img className={styles.img} src={imgUrl ?? 'https://placehold.co/558x273'} alt="" />
       <div className={styles.info}>
         <h2 className={styles.title}>{title}</h2>
         <div className={styles.footer}>
-          <span className={styles.reaction}>
-            <ButtonLike number={likeNumber} active={reaction === 'like'}/>
-            <ButtonDislike number={dislikeNumber} active={reaction === 'dislike'} />
-          </span>
-          <ButtonReadMore postPath={`/${id}`} />
+          <ButtonReactionBlock likeNumber={likeNumber} dislikeNumber={dislikeNumber} reaction={reaction} onLike={onLikeButton} onDislike={onDislikeButton}/>
+          <ButtonReadMore postPath={`/${postId}`} />
         </div>
       </div>
     </li>

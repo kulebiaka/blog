@@ -1,0 +1,6 @@
+.reaction{
+  display: flex;
+}
+.reaction div:first-child{
+  margin-right: 24px;
+}

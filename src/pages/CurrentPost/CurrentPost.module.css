@@ -12,6 +12,13 @@
 .reaction div:first-child{
   margin-right: 24px;
 }
+.link{
+  display: flex;
+  align-items: center;
+}
+.link:hover{
+  color:#818181
+}
 .arrow{
   margin-right: 10px;
   font-size: 18px;

@@ -1,5 +1,5 @@
 .post{
-  width: 558px;
+  width: 100%;
   margin-bottom: 24px;
   border: 1px solid #F4F4F4;
   border-radius: 6px;
@@ -16,17 +16,17 @@
   font-size: 28px;
   line-height: 32px;
 }
-.img{
-  width: 558px;
-  height: 273px;
-}
 .info{
   padding: 24px 16px 32px;
 }
+.text{
+  margin: 32px 0;
+  font-size: 24px;
+  line-height: 32px
+}
 .footer{
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: right;
   margin-top: 24px;
 }
 
